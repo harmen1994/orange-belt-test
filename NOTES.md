@@ -13,5 +13,8 @@
 ✅ ⛌ During initial set-up Husky went off, stating that I should fix prettier linting, this is why the second commit is not the 'exact' code base
 
 ## 🍅 Pomodoro 2
-🚧 Removed dead code, comments
+✅ Removed dead code, comments
 ✅ made enum of parsedStartingPosition keys in array
+
+## 🍅 Pomodoro 3
+- note: starting with inline technical debt
