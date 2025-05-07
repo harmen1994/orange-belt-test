@@ -48,10 +48,11 @@ export class Rover {
       instructionKey++
     ) {
       const instructionValue = instructions[instructionKey];
-      if (instructionValue === Instruction.LEFT) {
-        this.roverState.changeDirection(Instruction.LEFT);
-      } else if (instructionValue === Instruction.RIGHT) {
-        this.roverState.changeDirection(Instruction.RIGHT);
+      if (
+        instructionValue === Instruction.LEFT ||
+        instructionValue === Instruction.RIGHT
+      ) {
+        this.roverState.changeDirection(instructionValue);
       } else if (instructionValue === Instruction.MOVE) {
         this.roverState.moveToCurrentDirection();
       }
