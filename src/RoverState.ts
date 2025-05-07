@@ -15,8 +15,6 @@ export class RoverState {
     const currentDirectionIndex = directions.indexOf(this.dd as Direction);
     if (instruction === Instruction.LEFT) {
       const directionToTheLeft =
-        // 💩 not self-explanatory what it does
-        // 💩 could this be extracted?
         (currentDirectionIndex - 1 + directions.length) % directions.length;
       this.dd = directions[directionToTheLeft];
     }
