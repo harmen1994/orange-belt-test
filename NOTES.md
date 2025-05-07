@@ -22,3 +22,4 @@
 ✅ renamed variables in go function
 ✅ Added Instruction enum and renamed variables
 ✅ Added Direction enum
+✅ Finished fist refactor stage
