@@ -28,18 +28,19 @@ export class Rover {
     this.roverState = new RoverState();
     const parsedStartingPosition = startingPosition.split(' ');
     if (parsedStartingPosition.length == ITEMS_FOR_X_Y_DIRECTION) {
-      // could be instanceOf later
-      this.roverState.xx = parseInt(
-        parsedStartingPosition[Position.X],
-        DECIMAL_NUMBER
+      this.roverState.xx = this.parseCoordinate(
+        parsedStartingPosition[Position.X]
       );
-      this.roverState.yy = parseInt(
-        parsedStartingPosition[Position.Y],
-        DECIMAL_NUMBER
+      this.roverState.yy = this.parseCoordinate(
+        parsedStartingPosition[Position.Y]
       );
       this.roverState.dd =
         parsedStartingPosition[Position.DIRECTION][Position.X];
     }
+  }
+
+  private parseCoordinate(parsedStartingPosition: string) {
+    return parseInt(parsedStartingPosition, DECIMAL_NUMBER);
   }
 
   public go(instructions: string): void {
