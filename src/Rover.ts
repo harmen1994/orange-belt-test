@@ -7,7 +7,7 @@ enum Position {
 }
 const DECIMAL_NUMBER = 10;
 
-enum Instruction {
+export enum Instruction {
   LEFT = 'L',
   RIGHT = 'R',
   MOVE = 'M',
@@ -21,7 +21,10 @@ export enum Direction {
 }
 
 export class Rover {
+  private roverState: RoverState;
+
   constructor(startingPosition: string) {
+    this.roverState = new RoverState();
     const parsedStartingPosition = startingPosition.split(' ');
     if (parsedStartingPosition.length >= 3) {
       // could be instanceOf later
@@ -46,54 +49,16 @@ export class Rover {
     ) {
       const instructionValue = instructions[instructionKey];
       if (instructionValue === Instruction.LEFT) {
-        this.changeDirection(Instruction.LEFT);
+        this.roverState.changeDirection(Instruction.LEFT);
       } else if (instructionValue === Instruction.RIGHT) {
-        this.changeDirection(Instruction.RIGHT);
+        this.roverState.changeDirection(Instruction.RIGHT);
       } else if (instructionValue === Instruction.MOVE) {
-        this.moveToCurrentDirection();
+        this.roverState.moveToCurrentDirection();
       }
     }
   }
 
-  private moveToCurrentDirection() {
-    const directionMovement = {
-      [Direction.EAST]: { toRight: 1, toLeft: 0 },
-      [Direction.SOUTH]: { toRight: 0, toLeft: -1 },
-      [Direction.WEST]: { toRight: -1, toLeft: 0 },
-      [Direction.NORTH]: { toRight: 0, toLeft: 1 },
-    };
-    const movement = directionMovement[this.roverState.dd as Direction];
-    this.roverState.xx += movement.toRight;
-    this.roverState.yy += movement.toLeft;
-  }
-
-  private changeDirection(instruction: Instruction) {
-    const directions = [
-      Direction.NORTH,
-      Direction.EAST,
-      Direction.SOUTH,
-      Direction.WEST,
-    ];
-    const currentDirectionIndex = directions.indexOf(
-      this.roverState.dd as Direction
-    );
-    if (instruction === Instruction.LEFT) {
-      const directionToTheLeft =
-        // 💩 not self-explanatory what it does
-        // 💩 could this be extracted?
-        (currentDirectionIndex - 1 + directions.length) % directions.length;
-      this.roverState.dd = directions[directionToTheLeft];
-    }
-    if (instruction === Instruction.RIGHT) {
-      const directionToTheRight =
-        (currentDirectionIndex + 1) % directions.length;
-      this.roverState.dd = directions[directionToTheRight];
-    }
-  }
-
   public pos(): string {
-    return `${this.roverState.xx} ${this.roverState.yy} ${this.roverState.dd}`;
+    return this.roverState.position();
   }
-
-  private roverState: RoverState = new RoverState();
 }
