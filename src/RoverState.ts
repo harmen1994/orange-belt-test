@@ -1,9 +1,9 @@
 import { Direction, Instruction } from './Rover';
 
 export class RoverState {
-  xx: number = 0;
-  yy: number = 0;
-  dd: string = Direction.NORTH;
+  xCoordinate: number = 0;
+  yCoordinate: number = 0;
+  direction: string = Direction.NORTH;
 
   changeDirection(instruction: Instruction) {
     const directions = [
@@ -12,16 +12,18 @@ export class RoverState {
       Direction.SOUTH,
       Direction.WEST,
     ];
-    const currentDirectionIndex = directions.indexOf(this.dd as Direction);
+    const currentDirectionIndex = directions.indexOf(
+      this.direction as Direction
+    );
     if (instruction === Instruction.LEFT) {
       const directionToTheLeft =
         (currentDirectionIndex - 1 + directions.length) % directions.length;
-      this.dd = directions[directionToTheLeft];
+      this.direction = directions[directionToTheLeft];
     }
     if (instruction === Instruction.RIGHT) {
       const directionToTheRight =
         (currentDirectionIndex + 1) % directions.length;
-      this.dd = directions[directionToTheRight];
+      this.direction = directions[directionToTheRight];
     }
   }
 
@@ -32,12 +34,12 @@ export class RoverState {
       [Direction.WEST]: { toRight: -1, toUp: 0 },
       [Direction.NORTH]: { toRight: 0, toUp: 1 },
     };
-    const movement = directionMovement[this.dd as Direction];
-    this.xx += movement.toRight;
-    this.yy += movement.toUp;
+    const movement = directionMovement[this.direction as Direction];
+    this.xCoordinate += movement.toRight;
+    this.yCoordinate += movement.toUp;
   }
 
   position(): string {
-    return `${this.xx} ${this.yy} ${this.dd}`;
+    return `${this.xCoordinate} ${this.yCoordinate} ${this.direction}`;
   }
 }

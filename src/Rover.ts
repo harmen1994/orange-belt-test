@@ -28,13 +28,13 @@ export class Rover {
     this.roverState = new RoverState();
     const parsedStartingPosition = startingPosition.split(' ');
     if (parsedStartingPosition.length == ITEMS_FOR_X_Y_DIRECTION) {
-      this.roverState.xx = this.parseCoordinate(
+      this.roverState.xCoordinate = this.parseCoordinate(
         parsedStartingPosition[Position.X]
       );
-      this.roverState.yy = this.parseCoordinate(
+      this.roverState.yCoordinate = this.parseCoordinate(
         parsedStartingPosition[Position.Y]
       );
-      this.roverState.dd =
+      this.roverState.direction =
         parsedStartingPosition[Position.DIRECTION][Position.X];
     }
   }
