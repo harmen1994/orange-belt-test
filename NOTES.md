@@ -34,4 +34,5 @@
 -- ✅ look if it is possible to move these functions to roverstate
 
 ## 🍅 Pomodoro 6
-❒ Continue on looking per function if it does what it suppose to do and make them simpeler
+✅ Continue on looking per function if it does what it suppose to do and make them simpeler
+Found complexity per function quite all right

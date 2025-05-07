@@ -44,12 +44,8 @@ export class Rover {
   }
 
   public go(instructions: string): void {
-    for (
-      let instructionKey = 0;
-      instructionKey < instructions.length;
-      instructionKey++
-    ) {
-      const instructionValue = instructions[instructionKey];
+    const instructionArray = instructions.split('');
+    instructionArray.forEach((instructionValue) => {
       if (
         instructionValue === Instruction.LEFT ||
         instructionValue === Instruction.RIGHT
@@ -58,7 +54,7 @@ export class Rover {
       } else if (instructionValue === Instruction.MOVE) {
         this.roverState.moveToCurrentDirection();
       }
-    }
+    });
   }
 
   public pos(): string {
