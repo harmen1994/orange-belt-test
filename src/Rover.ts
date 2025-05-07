@@ -13,6 +13,13 @@ enum Instruction {
   MOVE = 'M',
 }
 
+enum Direction {
+  NORTH = 'N',
+  SOUTH = 'S',
+  EAST = 'E',
+  WEST = 'W',
+}
+
 export class Rover {
   constructor(startingPosition: string) {
     const parsedStartingPosition = startingPosition.split(' ');
@@ -40,36 +47,36 @@ export class Rover {
       const instructionValue = instructions[instructionKey];
       // 💩 extract the ifs and elses later
       if (instructionValue === Instruction.LEFT) {
-        if (this.roverState.dd === 'E') {
-          this.roverState.dd = 'N';
-        } else if (this.roverState.dd === 'N') {
-          this.roverState.dd = 'W';
-        } else if (this.roverState.dd === 'W') {
-          this.roverState.dd = 'S';
-        } else if (this.roverState.dd === 'S') {
-          this.roverState.dd = 'E';
+        if (this.roverState.dd === Direction.EAST) {
+          this.roverState.dd = Direction.NORTH;
+        } else if (this.roverState.dd === Direction.NORTH) {
+          this.roverState.dd = Direction.WEST;
+        } else if (this.roverState.dd === Direction.WEST) {
+          this.roverState.dd = Direction.SOUTH;
+        } else if (this.roverState.dd === Direction.SOUTH) {
+          this.roverState.dd = Direction.EAST;
         }
       } else if (instructionValue === Instruction.RIGHT) {
-        if (this.roverState.dd === 'E') {
-          this.roverState.dd = 'S';
-        } else if (this.roverState.dd === 'S') {
-          this.roverState.dd = 'W';
-        } else if (this.roverState.dd === 'W') {
-          this.roverState.dd = 'N';
-        } else if (this.roverState.dd === 'N') {
-          this.roverState.dd = 'E';
+        if (this.roverState.dd === Direction.EAST) {
+          this.roverState.dd = Direction.SOUTH;
+        } else if (this.roverState.dd === Direction.SOUTH) {
+          this.roverState.dd = Direction.WEST;
+        } else if (this.roverState.dd === Direction.WEST) {
+          this.roverState.dd = Direction.NORTH;
+        } else if (this.roverState.dd === Direction.NORTH) {
+          this.roverState.dd = Direction.EAST;
         }
       } else if (instructionValue === Instruction.MOVE) {
-        if (this.roverState.dd === 'E') {
+        if (this.roverState.dd === Direction.EAST) {
           this.roverState.xx++;
         }
-        if (this.roverState.dd === 'S') {
+        if (this.roverState.dd === Direction.SOUTH) {
           this.roverState.yy--;
         }
-        if (this.roverState.dd === 'W') {
+        if (this.roverState.dd === Direction.WEST) {
           this.roverState.xx--;
         }
-        if (this.roverState.dd === 'N') {
+        if (this.roverState.dd === Direction.NORTH) {
           this.roverState.yy++;
         }
       }

@@ -21,3 +21,4 @@
 - note: really hate prettier default settings regarding line length, it makes code spaghetti
 ✅ renamed variables in go function
 ✅ Added Instruction enum and renamed variables
+✅ Added Direction enum
