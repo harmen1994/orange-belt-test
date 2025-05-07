@@ -29,9 +29,6 @@ npm start     # Runs the project
 npm test   # Test using Jest
 ```
 
-## Working with the project
+## AI clause
 
-### Tests
-
-### Source Code
-
+In this graduation Copilot in Webstorm were used and a private hosted 4ø model of ChatGPT.
