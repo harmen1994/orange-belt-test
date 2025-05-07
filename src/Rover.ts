@@ -57,18 +57,15 @@ export class Rover {
   }
 
   private moveToCurrentDirection() {
-    if (this.roverState.dd === Direction.EAST) {
-      this.roverState.xx++;
-    }
-    if (this.roverState.dd === Direction.SOUTH) {
-      this.roverState.yy--;
-    }
-    if (this.roverState.dd === Direction.WEST) {
-      this.roverState.xx--;
-    }
-    if (this.roverState.dd === Direction.NORTH) {
-      this.roverState.yy++;
-    }
+    const directionMovement = {
+      [Direction.EAST]: { toRight: 1, toLeft: 0 },
+      [Direction.SOUTH]: { toRight: 0, toLeft: -1 },
+      [Direction.WEST]: { toRight: -1, toLeft: 0 },
+      [Direction.NORTH]: { toRight: 0, toLeft: 1 },
+    };
+    const movement = directionMovement[this.roverState.dd as Direction];
+    this.roverState.xx += movement.toRight;
+    this.roverState.yy += movement.toLeft;
   }
 
   private changeDirection(instruction: Instruction) {
