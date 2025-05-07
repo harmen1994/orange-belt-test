@@ -26,9 +26,12 @@
 
 ## 🍅 Pomodoro 4
 ✅ comment in RoverState
-🚧 long method called go()
+✅ long method called go()
 
 ## 🍅 Pomodoro 5
 ✅ long method called go()
 -- ✅ also work further on the moveToCurrentDirection() function
 -- ✅ look if it is possible to move these functions to roverstate
+
+## 🍅 Pomodoro 6
+❒ Continue on looking per function if it does what it suppose to do and make them simpeler
