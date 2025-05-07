@@ -27,14 +27,14 @@ export class RoverState {
 
   moveToCurrentDirection() {
     const directionMovement = {
-      [Direction.EAST]: { xx: 1, yy: 0 },
-      [Direction.SOUTH]: { xx: 0, yy: -1 },
-      [Direction.WEST]: { xx: -1, yy: 0 },
-      [Direction.NORTH]: { xx: 0, yy: 1 },
+      [Direction.EAST]: { toRight: 1, toUp: 0 },
+      [Direction.SOUTH]: { toRight: 0, toUp: -1 },
+      [Direction.WEST]: { toRight: -1, toUp: 0 },
+      [Direction.NORTH]: { toRight: 0, toUp: 1 },
     };
     const movement = directionMovement[this.dd as Direction];
-    this.xx += movement.xx;
-    this.yy += movement.yy;
+    this.xx += movement.toRight;
+    this.yy += movement.toUp;
   }
 
   position(): string {
