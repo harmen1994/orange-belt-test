@@ -47,15 +47,7 @@ export class Rover {
       const instructionValue = instructions[instructionKey];
       // 💩 extract the ifs and elses later
       if (instructionValue === Instruction.LEFT) {
-        if (this.roverState.dd === Direction.EAST) {
-          this.roverState.dd = Direction.NORTH;
-        } else if (this.roverState.dd === Direction.NORTH) {
-          this.roverState.dd = Direction.WEST;
-        } else if (this.roverState.dd === Direction.WEST) {
-          this.roverState.dd = Direction.SOUTH;
-        } else if (this.roverState.dd === Direction.SOUTH) {
-          this.roverState.dd = Direction.EAST;
-        }
+        this.changeDirection();
       } else if (instructionValue === Instruction.RIGHT) {
         if (this.roverState.dd === Direction.EAST) {
           this.roverState.dd = Direction.SOUTH;
@@ -80,6 +72,18 @@ export class Rover {
           this.roverState.yy++;
         }
       }
+    }
+  }
+
+  private changeDirection() {
+    if (this.roverState.dd === Direction.EAST) {
+      this.roverState.dd = Direction.NORTH;
+    } else if (this.roverState.dd === Direction.NORTH) {
+      this.roverState.dd = Direction.WEST;
+    } else if (this.roverState.dd === Direction.WEST) {
+      this.roverState.dd = Direction.SOUTH;
+    } else if (this.roverState.dd === Direction.SOUTH) {
+      this.roverState.dd = Direction.EAST;
     }
   }
 
