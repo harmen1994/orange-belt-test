@@ -23,3 +23,7 @@
 ✅ Added Instruction enum and renamed variables
 ✅ Added Direction enum
 ✅ Finished fist refactor stage
+
+## 🍅 Pomodoro 4
+- comment in RoverState
+- long method called go()
