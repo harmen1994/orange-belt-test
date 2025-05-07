@@ -13,7 +13,7 @@ enum Instruction {
   MOVE = 'M',
 }
 
-enum Direction {
+export enum Direction {
   NORTH = 'N',
   EAST = 'E',
   SOUTH = 'S',
@@ -51,19 +51,23 @@ export class Rover {
       } else if (instructionValue === Instruction.RIGHT) {
         this.changeDirection(Instruction.RIGHT);
       } else if (instructionValue === Instruction.MOVE) {
-        if (this.roverState.dd === Direction.EAST) {
-          this.roverState.xx++;
-        }
-        if (this.roverState.dd === Direction.SOUTH) {
-          this.roverState.yy--;
-        }
-        if (this.roverState.dd === Direction.WEST) {
-          this.roverState.xx--;
-        }
-        if (this.roverState.dd === Direction.NORTH) {
-          this.roverState.yy++;
-        }
+        this.moveToCurrentDirection();
       }
+    }
+  }
+
+  private moveToCurrentDirection() {
+    if (this.roverState.dd === Direction.EAST) {
+      this.roverState.xx++;
+    }
+    if (this.roverState.dd === Direction.SOUTH) {
+      this.roverState.yy--;
+    }
+    if (this.roverState.dd === Direction.WEST) {
+      this.roverState.xx--;
+    }
+    if (this.roverState.dd === Direction.NORTH) {
+      this.roverState.yy++;
     }
   }
 
