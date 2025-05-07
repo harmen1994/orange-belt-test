@@ -1,12 +1,13 @@
 import { RoverState } from './RoverState';
 
 export class Rover {
-  constructor(p: string = '') {
-    const s = p.split(' ');
-    if (s.length >= 3) {
-      this.rs.xx = parseInt(s[0], 10);
-      this.rs.yy = parseInt(s[1], 10);
-      this.rs.dd = s[2][0];
+  constructor(startingPosition: string) {
+    const parsedStartingPosition = startingPosition.split(' ');
+    if (parsedStartingPosition.length >= 3) {
+      // could be instanceOf later
+      this.rs.xx = parseInt(parsedStartingPosition[0], 10);
+      this.rs.yy = parseInt(parsedStartingPosition[1], 10);
+      this.rs.dd = parsedStartingPosition[2][0];
     }
   }
 
@@ -48,10 +49,6 @@ export class Rover {
         }
       }
     }
-  }
-
-  public G(z: string): void {
-    this.go(z[0]);
   }
 
   public get XYD(): string {
