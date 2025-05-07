@@ -17,4 +17,7 @@
 ✅ made enum of parsedStartingPosition keys in array
 
 ## 🍅 Pomodoro 3
-- note: starting with inline technical debt
+- note: starting with inline technical debt instead of TECHDEBT.md
+- note: really hate prettier default settings regarding line length, it makes code spaghetti
+✅ renamed variables in go function
+✅ Added Instruction enum and renamed variables
