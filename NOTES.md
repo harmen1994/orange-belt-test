@@ -14,3 +14,4 @@
 
 ## 🍅 Pomodoro 2
 🚧 Removed dead code, comments
+✅ made enum of parsedStartingPosition keys in array

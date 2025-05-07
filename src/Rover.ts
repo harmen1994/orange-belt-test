@@ -1,13 +1,20 @@
 import { RoverState } from './RoverState';
 
+enum Position {
+  X = 0,
+  Y = 1,
+  DIRECTION = 2,
+}
+
 export class Rover {
   constructor(startingPosition: string) {
     const parsedStartingPosition = startingPosition.split(' ');
     if (parsedStartingPosition.length >= 3) {
       // could be instanceOf later
-      this.roverState.xx = parseInt(parsedStartingPosition[0], 10);
-      this.roverState.yy = parseInt(parsedStartingPosition[1], 10);
-      this.roverState.dd = parsedStartingPosition[2][0];
+      this.roverState.xx = parseInt(parsedStartingPosition[Position.X], 10);
+      this.roverState.yy = parseInt(parsedStartingPosition[Position.Y], 10);
+      this.roverState.dd =
+        parsedStartingPosition[Position.DIRECTION][Position.X];
     }
   }
 
