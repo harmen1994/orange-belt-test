@@ -30,5 +30,5 @@
 
 ## 🍅 Pomodoro 5
 🚧 long method called go()
--- also work further on the moveToCurrentDirection() function
+-- ✅ also work further on the moveToCurrentDirection() function
 -- look if it is possible to move these functions to roverstate

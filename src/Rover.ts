@@ -45,7 +45,6 @@ export class Rover {
       instructionKey++
     ) {
       const instructionValue = instructions[instructionKey];
-      // 💩 extract the ifs and elses later
       if (instructionValue === Instruction.LEFT) {
         this.changeDirection(Instruction.LEFT);
       } else if (instructionValue === Instruction.RIGHT) {
@@ -80,6 +79,8 @@ export class Rover {
     );
     if (instruction === Instruction.LEFT) {
       const directionToTheLeft =
+        // 💩 not self-explanatory what it does
+        // 💩 could this be extracted?
         (currentDirectionIndex - 1 + directions.length) % directions.length;
       this.roverState.dd = directions[directionToTheLeft];
     }
