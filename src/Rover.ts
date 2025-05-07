@@ -15,8 +15,8 @@ enum Instruction {
 
 enum Direction {
   NORTH = 'N',
-  SOUTH = 'S',
   EAST = 'E',
+  SOUTH = 'S',
   WEST = 'W',
 }
 
@@ -47,7 +47,7 @@ export class Rover {
       const instructionValue = instructions[instructionKey];
       // 💩 extract the ifs and elses later
       if (instructionValue === Instruction.LEFT) {
-        this.changeDirection();
+        this.changeDirection(Instruction.LEFT);
       } else if (instructionValue === Instruction.RIGHT) {
         if (this.roverState.dd === Direction.EAST) {
           this.roverState.dd = Direction.SOUTH;
@@ -75,15 +75,20 @@ export class Rover {
     }
   }
 
-  private changeDirection() {
-    if (this.roverState.dd === Direction.EAST) {
-      this.roverState.dd = Direction.NORTH;
-    } else if (this.roverState.dd === Direction.NORTH) {
-      this.roverState.dd = Direction.WEST;
-    } else if (this.roverState.dd === Direction.WEST) {
-      this.roverState.dd = Direction.SOUTH;
-    } else if (this.roverState.dd === Direction.SOUTH) {
-      this.roverState.dd = Direction.EAST;
+  private changeDirection(instruction: Instruction) {
+    const directions = [
+      Direction.NORTH,
+      Direction.EAST,
+      Direction.SOUTH,
+      Direction.WEST,
+    ];
+    const currentDirectionIndex = directions.indexOf(
+      this.roverState.dd as Direction
+    );
+    if (instruction === Instruction.LEFT) {
+      const directionToTheLeft =
+        (currentDirectionIndex - 1 + directions.length) % directions.length;
+      this.roverState.dd = directions[directionToTheLeft];
     }
   }
 
